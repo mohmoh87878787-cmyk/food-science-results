@@ -1,48 +1,180 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>منظومة كلية علوم الأغذية</title>
+
 <style>
-body{font-family:Arial,sans-serif;background:#f0f4f8;margin:0;color:#183044}
-header{background:#075b48;color:white;padding:25px 15px;text-align:center}
-main{max-width:650px;margin:25px auto;padding:20px}
-.card{background:white;padding:22px;margin:15px 0;border-radius:12px;box-shadow:0 2px 10px #0001}
-h2{color:#075b48}
-input,button{box-sizing:border-box;width:100%;padding:13px;margin-top:10px;border-radius:7px;font-size:16px}
-input{border:1px solid #bbb}
-button{background:#075b48;color:white;border:0;cursor:pointer}
-.note{font-size:13px;color:#666;line-height:1.8}
-footer{text-align:center;padding:20px;color:#666}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f2f6f5;
+  color:#24352f;
+}
+header{
+  background:#075b48;
+  color:white;
+  text-align:center;
+  padding:28px 15px;
+}
+header h1{font-size:23px;margin:8px 0}
+header p{margin:8px 0;font-size:14px}
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  background:white;
+  padding:13px;
+  box-shadow:0 2px 8px #0001;
+}
+nav a{
+  text-decoration:none;
+  color:#075b48;
+  font-weight:bold;
+  padding:8px;
+}
+main{max-width:800px;margin:25px auto;padding:15px}
+.card{
+  background:white;
+  border-radius:14px;
+  padding:22px;
+  margin-bottom:20px;
+  box-shadow:0 3px 12px #0000000d;
+}
+h2{color:#075b48;font-size:20px}
+label{display:block;margin-top:15px;font-weight:bold}
+input{
+  width:100%;
+  padding:13px;
+  margin-top:8px;
+  border:1px solid #ccd5d1;
+  border-radius:8px;
+  font-size:16px;
+}
+button{
+  width:100%;
+  padding:13px;
+  margin-top:15px;
+  background:#075b48;
+  color:white;
+  border:0;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+.notice{
+  background:#fff8df;
+  border-right:4px solid #d4a72c;
+  padding:13px;
+  border-radius:5px;
+  line-height:1.8;
+}
+.item{
+  padding:13px;
+  border-bottom:1px solid #eee;
+  line-height:1.8;
+}
+footer{
+  text-align:center;
+  padding:20px;
+  background:#075b48;
+  color:white;
+  font-size:13px;
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>جامعة وادي الشاطئ</h1>
-<h2 style="color:white">كلية علوم الأغذية</h2>
-<p>منظومة النتائج والمواد الدراسية</p>
+  <div style="font-size:35px">🎓</div>
+  <h1>جامعة وادي الشاطئ</h1>
+  <h2 style="color:white">كلية علوم الأغذية</h2>
+  <p>منظومة النتائج والمواد الدراسية</p>
 </header>
+
+<nav>
+  <a href="#results">استعلام النتائج</a>
+  <a href="#materials">المواد الدراسية</a>
+  <a href="#about">عن المنظومة</a>
+</nav>
+
 <main>
-<section class="card">
-<h2>استعلام عن النتائج</h2>
-<p>أدخل رقم القيد للاستعلام عن نتيجتك.</p>
-<form onsubmit="event.preventDefault();document.getElementById('message').textContent='هذه واجهة تجريبية. لم يتم ربط قاعدة بيانات النتائج بعد.';">
-<input type="text" placeholder="رقم القيد الجامعي" required>
-<button type="submit">عرض النتيجة</button>
-</form>
-<p id="message" role="status"></p>
+
+<section class="card" id="results">
+  <h2>📊 استعلام عن النتائج</h2>
+  <p>أدخل رقم قيدك للاستعلام عن نتيجتك الدراسية.</p>
+
+  <form id="resultForm">
+    <label for="studentId">رقم القيد</label>
+    <input
+      id="studentId"
+      type="text"
+      placeholder="أدخل رقم القيد"
+      required
+    >
+    <button type="submit">استعلام عن النتيجة</button>
+  </form>
+
+  <div id="resultMessage" class="notice" style="margin-top:15px">
+    سيتم عرض النتائج بعد ربط الصفحة بقاعدة البيانات
+    والتحقق من اعتمادها رسميًا.
+  </div>
 </section>
-<section class="card">
-<h2>المواد الدراسية</h2>
-<p>يمكن تخصيص هذا القسم لتنزيل المحاضرات والملفات الدراسية.</p>
-<p class="note">ستظهر المواد بعد إضافة الملفات وربطها بقاعدة البيانات.</p>
+
+<section class="card" id="materials">
+  <h2>📚 المواد الدراسية</h2>
+  <p>قسم مخصص للمحاضرات والملفات الدراسية الخاصة بالكلية.</p>
+
+  <div class="item">
+    <strong>المحاضرات الدراسية</strong><br>
+    ستظهر ملفات المقررات بعد إضافة المواد وروابط تحميلها.
+  </div>
+
+  <div class="item">
+    <strong>المراجع العلمية</strong><br>
+    قسم مخصص للكتب والمراجع التي توفرها الكلية.
+  </div>
+
+  <div class="item">
+    <strong>الملفات التعليمية</strong><br>
+    قسم مخصص لملفات PDF والعروض التقديمية.
+  </div>
 </section>
-<section class="card">
-<h2>شؤون الطلبة</h2>
-<p>يجب تخصيص لوحة دخول آمنة للموظفين لاعتماد النتائج ونشرها.</p>
+
+<section class="card" id="about">
+  <h2>ℹ️ عن المنظومة</h2>
+  <p>
+    منظومة إلكترونية لكلية علوم الأغذية بجامعة وادي الشاطئ،
+    تهدف إلى تسهيل استعلام الطلاب عن النتائج المعتمدة
+    والوصول إلى المواد الدراسية.
+  </p>
+  <div class="notice">
+    اعتماد النتائج وإدارتها من اختصاص الموظفين المخولين
+    بشؤون الدراسة والامتحانات.
+  </div>
 </section>
-<p class="note">تنبيه: هذه نسخة أولية للواجهة فقط. لا تعرض نتائج حقيقية ولا تحفظ بيانات الطلاب حتى يتم إعداد قاعدة البيانات والصلاحيات.</p>
+
 </main>
-<footer>جامعة وادي الشاطئ — كلية علوم الأغذية</footer>
+
+<footer>
+  جامعة وادي الشاطئ | كلية علوم الأغذية<br>
+  منظومة النتائج والمواد الدراسية
+</footer>
+
+<script>
+document.getElementById("resultForm").addEventListener("submit",
+function(event){
+  event.preventDefault();
+
+  document.getElementById("resultMessage").textContent =
+    "الواجهة جاهزة، لكن قاعدة البيانات لم تُربط بعد. " +
+    "لن تظهر نتائج حقيقية حتى يكتمل الربط والتحقق من اعتماد النتائج.";
+});
+</script>
+
 </body>
 </html>
